@@ -2,6 +2,8 @@
 import org.junit.Test;
 import ru.praktikum.services.qa.scooter.MainPage;
 
+import static org.junit.Assert.assertTrue;
+
 
 public class LogoClickTests extends OpeningClosingMainPage {
 
@@ -10,7 +12,7 @@ public class LogoClickTests extends OpeningClosingMainPage {
         MainPage mainPage = new MainPage(driver);
         mainPage.topOrderButtonClick();
         mainPage.scooterLogoClick();
-        mainPage.isItMainPage();
+        assertTrue("Главная страница не открылась", mainPage.isItMainPage());
     }
 
     @Test
@@ -18,7 +20,8 @@ public class LogoClickTests extends OpeningClosingMainPage {
         MainPage mainPage = new MainPage(driver);
         mainPage.yandexLogoClick();
         mainPage.switchToSecondTab();
-        mainPage.isItPage("https://ya.ru/");
+        assertTrue("Главная страница Яндекса не открылась",
+                mainPage.isItPage("https://ya.ru/"));
 
     }
 

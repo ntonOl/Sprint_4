@@ -2,41 +2,48 @@
 import org.junit.Test;
 import ru.praktikum.services.qa.scooter.OrderForm;
 
+import static org.junit.Assert.assertTrue;
+
 public class OrderFormErrorsTests extends OpeningClosingOrderPage {
 
     @Test
     public void nameErrorCheck() {
         OrderForm orderForm = new OrderForm(driver);
         orderForm.nextButtonClick();
-        orderForm.isNameErrorVisible();
+        assertTrue("Сообщение об ошибке не появилось",
+                orderForm.isNameErrorVisible());
     }
 
     @Test
     public void lastNameErrorCheck() {
         OrderForm orderForm = new OrderForm(driver);
         orderForm.nextButtonClick();
-        orderForm.isLastNameErrorVisible();
+        assertTrue("Сообщение об ошибке не появилось",
+                orderForm.isLastNameErrorVisible());
     }
 
     @Test
     public void addressErrorCheck() {
         OrderForm orderForm = new OrderForm(driver);
         orderForm.nextButtonClick();
-        orderForm.isAddressErrorVisible();
+        assertTrue("Сообщение об ошибке не появилось",
+                orderForm.isAddressErrorVisible());
     }
 
     @Test
     public void metroErrorCheck() {
         OrderForm orderForm = new OrderForm(driver);
         orderForm.nextButtonClick();
-        orderForm.isMetroErrorVisible();
+        assertTrue("Сообщение об ошибке не появилось",
+                orderForm.isMetroErrorVisible());
     }
 
     @Test
     public void phoneErrorCheck() {
         OrderForm orderForm = new OrderForm(driver);
         orderForm.nextButtonClick();
-        orderForm.isPhoneErrorVisible();
+        assertTrue("Сообщение об ошибке не появилось",
+                orderForm.isPhoneErrorVisible());
     }
 
 
@@ -52,7 +59,8 @@ public class OrderFormErrorsTests extends OpeningClosingOrderPage {
         orderForm.nextButtonClick();
 
         orderForm.orderButtonEndClick();
-        orderForm.isDateErrorVisible();
+        assertTrue("Сообщение об ошибке не появилось",
+                orderForm.isDateErrorVisible());
     }
 
 
@@ -68,7 +76,8 @@ public class OrderFormErrorsTests extends OpeningClosingOrderPage {
         orderForm.nextButtonClick();
 
         orderForm.orderButtonEndClick();
-        orderForm.isRentPeriodErrorVisible();
+        assertTrue("Сообщение об ошибке не появилось",
+                orderForm.isRentPeriodErrorVisible());
     }
 
     @Test
@@ -83,7 +92,8 @@ public class OrderFormErrorsTests extends OpeningClosingOrderPage {
         orderForm.nextButtonClick();
 
         orderForm.orderButtonEndClick();
-        orderForm.isColorChooseErrorVisible();
+        assertTrue("Сообщение об ошибке не появилось",
+                orderForm.isColorChooseErrorVisible());
     }
 
 
@@ -99,7 +109,8 @@ public class OrderFormErrorsTests extends OpeningClosingOrderPage {
         orderForm.nextButtonClick();
 
         orderForm.orderButtonEndClick();
-        orderForm.isCommentFieldErrorVisible();
+        assertTrue("Сообщение об ошибке не появилось",
+                orderForm.isCommentFieldErrorVisible());
     }
 
 }

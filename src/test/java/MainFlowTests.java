@@ -4,6 +4,8 @@ import org.junit.runners.Parameterized;
 import ru.praktikum.services.qa.scooter.MainPage;
 import ru.praktikum.services.qa.scooter.OrderForm;
 
+import static org.junit.Assert.assertTrue;
+
 
 @RunWith(Parameterized.class)
 public class MainFlowTests extends OpeningClosingMainPage {
@@ -44,12 +46,6 @@ public class MainFlowTests extends OpeningClosingMainPage {
 
     @Test
     public void orderWithTopButtonTest() {
-        /*FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("--headless");
-        options.addArguments("--no-sandbox");
-        driver = new FirefoxDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/");*/
-
         MainPage mainPage = new MainPage(driver);
 
         mainPage.topOrderButtonClick();
@@ -59,19 +55,14 @@ public class MainFlowTests extends OpeningClosingMainPage {
         orderForm.fillingOutOrderForm(name, lastName, address, metro,
                 phone, date, rentPeriod, color, comment);
 
-        orderForm.isSuccessfulOrder();
+        assertTrue("Сообщение об успешном заказе не появилось",
+                orderForm.isSuccessfulOrder());
 
     }
 
 
     @Test
     public void orderWithBottomButtonTest() {
-        /*FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("--headless");
-        options.addArguments("--no-sandbox");
-        driver = new FirefoxDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/");*/
-
         MainPage mainPage = new MainPage(driver);
 
         mainPage.bottomOrderButtonClick();
@@ -81,7 +72,8 @@ public class MainFlowTests extends OpeningClosingMainPage {
         orderForm.fillingOutOrderForm(name, lastName, address, metro,
                 phone, date, rentPeriod, color, comment);
 
-        orderForm.isSuccessfulOrder();
+        assertTrue("Сообщение об успешном заказе не появилось",
+                orderForm.isSuccessfulOrder());
 
     }
 

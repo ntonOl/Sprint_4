@@ -5,6 +5,7 @@ import ru.praktikum.services.qa.scooter.OrderStatusPage;
 
 import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
+import static org.junit.Assert.assertTrue;
 
 
 public class InvalidOrderNumberTests extends OpeningClosingMainPage {
@@ -13,7 +14,8 @@ public class InvalidOrderNumberTests extends OpeningClosingMainPage {
     public void checkTransitionToStatusPage() {
         MainPage mainPage = new MainPage(driver);
         mainPage.orderStatusCheck("-1");
-        mainPage.isItPage("https://qa-scooter.praktikum-services.ru/track");
+        assertTrue("Страница статуса заказа не открылась",
+                mainPage.isItPage("https://qa-scooter.praktikum-services.ru/track"));
     }
 
     @Test

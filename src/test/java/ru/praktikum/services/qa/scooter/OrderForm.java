@@ -1,9 +1,6 @@
 package ru.praktikum.services.qa.scooter;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -240,64 +237,113 @@ public class OrderForm {
     }
 
     //Проверка сообщения об успешном заказе
-    public void isSuccessfulOrder() {
-        new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.textToBePresentInElementLocated(successfulOrderMessage,
-                        "Заказ оформлен"));
+    public boolean isSuccessfulOrder() {
+        try { new WebDriverWait(driver, Duration.ofSeconds(5))
+                    .until(ExpectedConditions.textToBePresentInElementLocated(successfulOrderMessage,
+                            "Заказ оформлен"));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
     //Проверка ошибки поля Имя
-    public void isNameErrorVisible() {
-        new WebDriverWait(driver, Duration.ofSeconds(1))
-                .until(ExpectedConditions.visibilityOfElementLocated(nameError));
+    public boolean isNameErrorVisible() {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(1))
+                    .until(ExpectedConditions.visibilityOfElementLocated(nameError));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
     //Проверка ошибки поля Фамилия
-    public void isLastNameErrorVisible() {
-        new WebDriverWait(driver, Duration.ofSeconds(1))
-                .until(ExpectedConditions.visibilityOfElementLocated(lastNameError));
+    public boolean isLastNameErrorVisible() {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(1))
+                    .until(ExpectedConditions.visibilityOfElementLocated(lastNameError));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
     //Проверка ошибки поля Адрес
-    public void isAddressErrorVisible() {
-        new WebDriverWait(driver, Duration.ofSeconds(1))
-                .until(ExpectedConditions.visibilityOfElementLocated(addressError));
+    public boolean isAddressErrorVisible() {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(1))
+                    .until(ExpectedConditions.visibilityOfElementLocated(addressError));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
     //Проверка ошибки поля метро
-    public void isMetroErrorVisible() {
-        new WebDriverWait(driver, Duration.ofSeconds(1))
-                .until(ExpectedConditions.visibilityOfElementLocated(metroError));
+    public boolean isMetroErrorVisible() {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(1))
+                    .until(ExpectedConditions.visibilityOfElementLocated(metroError));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
     //Проверка ошибки поля ввода телефона
-    public void isPhoneErrorVisible() {
-        new WebDriverWait(driver, Duration.ofSeconds(1))
-                .until(ExpectedConditions.visibilityOfElementLocated(phoneError));
+    public boolean isPhoneErrorVisible() {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(1))
+                    .until(ExpectedConditions.visibilityOfElementLocated(phoneError));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
     //Проверка ошибки поля даты
-    public void isDateErrorVisible() {
-        new WebDriverWait(driver, Duration.ofSeconds(1))
-                .until(ExpectedConditions.visibilityOfElementLocated(dateError));
+    public boolean isDateErrorVisible() {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(1))
+                    .until(ExpectedConditions.visibilityOfElementLocated(dateError));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
     //Проверка ошибки поля срока аренды
-    public void isRentPeriodErrorVisible() {
-        new WebDriverWait(driver, Duration.ofSeconds(1))
-                .until(ExpectedConditions.visibilityOfElementLocated(rentPeriodError));
+    public boolean isRentPeriodErrorVisible() {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(1))
+                    .until(ExpectedConditions.visibilityOfElementLocated(rentPeriodError));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
-    //Проверка ошибки поля срока аренды
-    public void isColorChooseErrorVisible() {
-        new WebDriverWait(driver, Duration.ofSeconds(1))
-                .until(ExpectedConditions.visibilityOfElementLocated(colorChooseError));
+    //Проверка ошибки поля выбора цвета
+    public boolean isColorChooseErrorVisible() {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(1))
+                    .until(ExpectedConditions.visibilityOfElementLocated(colorChooseError));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
-    //Проверка ошибки поля срока аренды
-    public void isCommentFieldErrorVisible() {
-        new WebDriverWait(driver, Duration.ofSeconds(1))
-                .until(ExpectedConditions.visibilityOfElementLocated(commentFieldError));
+    //Проверка ошибки поля комментария
+    public boolean isCommentFieldErrorVisible() {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(1))
+                    .until(ExpectedConditions.visibilityOfElementLocated(commentFieldError));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
 }

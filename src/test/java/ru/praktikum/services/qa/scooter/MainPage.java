@@ -1,9 +1,6 @@
 package ru.praktikum.services.qa.scooter;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
@@ -146,15 +143,25 @@ public class MainPage {
     }
 
     //Проверка, что мы находимся на главной странице
-    public void isItMainPage() {
-        new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.urlToBe(getMainPageUrl()));
+    public boolean isItMainPage() {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(5))
+                    .until(ExpectedConditions.urlToBe(getMainPageUrl()));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
     //Проверка, что мы находимся на какой-то другой странице
-    public void isItPage(String pageName) {
-        new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.urlContains(pageName));
+    public boolean isItPage(String pageName) {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(5))
+                    .until(ExpectedConditions.urlContains(pageName));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
     //Переключение на страницу во второй вкладке
