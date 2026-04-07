@@ -1,4 +1,4 @@
-package pageObject;
+package ru.praktikum.services.qa.scooter;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +12,8 @@ import java.util.List;
 
 public class MainPage {
     private WebDriver driver;
+
+    private final static String mainPageUrl = "https://qa-scooter.praktikum-services.ru/";
 
     // Пункты списка Вопросы о важном
     private By listItems = By.className("accordion__item");
@@ -44,6 +46,10 @@ public class MainPage {
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public static String getMainPageUrl() {
+        return mainPageUrl;
     }
 
     // Клик по одному пункту списка Вопросы о важном
@@ -137,5 +143,30 @@ public class MainPage {
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.elementToBeClickable(driver.findElement(goButton)))
                 .click();
+    }
+
+    //Проверка, что мы находимся на главной странице
+    public void isItMainPage() {
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.urlToBe(getMainPageUrl()));
+    }
+
+    //Проверка, что мы находимся на какой-то другой странице
+    public void isItPage(String pageName) {
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.urlContains(pageName));
+    }
+
+    //Переключение на страницу во второй вкладке
+    public void switchToSecondTab() {
+        String originalWindow = driver.getWindowHandle();
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.numberOfWindowsToBe(2));
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!originalWindow.equals(windowHandle)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
     }
 }

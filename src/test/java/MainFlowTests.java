@@ -1,16 +1,12 @@
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import pageObject.MainPage;
-import pageObject.OrderForm;
+import ru.praktikum.services.qa.scooter.MainPage;
+import ru.praktikum.services.qa.scooter.OrderForm;
 
 
 @RunWith(Parameterized.class)
-public class MainFlowTests {
-    private WebDriver driver;
+public class MainFlowTests extends OpeningClosingMainPage {
 
     private final String name;
     private final String lastName;
@@ -36,7 +32,7 @@ public class MainFlowTests {
         this.comment = comment;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: {0} {1} {2} {3} {4} {5} {6} {7} {8}")
     public static Object[][] getDataSetForOrder() {
         return new Object[][]{
                 {"Яна", "Павловна", "Казинца 99, Москва", "Сокольники",
@@ -47,12 +43,7 @@ public class MainFlowTests {
     }
 
     @Test
-    public void OrderWithTopButtonTest() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-
+    public void orderWithTopButtonTest() {
         /*FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
@@ -70,18 +61,11 @@ public class MainFlowTests {
 
         orderForm.isSuccessfulOrder();
 
-        driver.quit();
-
     }
 
 
     @Test
-    public void OrderWithBottomButtonTest() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-
+    public void orderWithBottomButtonTest() {
         /*FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
@@ -99,13 +83,6 @@ public class MainFlowTests {
 
         orderForm.isSuccessfulOrder();
 
-        driver.quit();
-
     }
-
-    /*@After
-    public void tearDown() {
-        driver.quit();
-    }*/
 
 }

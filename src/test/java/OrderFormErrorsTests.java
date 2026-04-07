@@ -1,63 +1,39 @@
-import org.junit.After;
-import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import pageObject.OrderForm;
 
-public class OrderFormErrorsTests {
-    private WebDriver driver;
+import org.junit.Test;
+import ru.praktikum.services.qa.scooter.OrderForm;
+
+public class OrderFormErrorsTests extends OpeningClosingOrderPage {
 
     @Test
-    public void NameErrorCheck() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/order");
+    public void nameErrorCheck() {
         OrderForm orderForm = new OrderForm(driver);
         orderForm.nextButtonClick();
         orderForm.isNameErrorVisible();
     }
 
     @Test
-    public void LastNameErrorCheck() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/order");
+    public void lastNameErrorCheck() {
         OrderForm orderForm = new OrderForm(driver);
         orderForm.nextButtonClick();
         orderForm.isLastNameErrorVisible();
     }
 
     @Test
-    public void AddressErrorCheck() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/order");
+    public void addressErrorCheck() {
         OrderForm orderForm = new OrderForm(driver);
         orderForm.nextButtonClick();
         orderForm.isAddressErrorVisible();
     }
 
     @Test
-    public void MetroErrorCheck() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/order");
+    public void metroErrorCheck() {
         OrderForm orderForm = new OrderForm(driver);
         orderForm.nextButtonClick();
         orderForm.isMetroErrorVisible();
     }
 
     @Test
-    public void PhoneErrorCheck() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/order");
+    public void phoneErrorCheck() {
         OrderForm orderForm = new OrderForm(driver);
         orderForm.nextButtonClick();
         orderForm.isPhoneErrorVisible();
@@ -65,11 +41,7 @@ public class OrderFormErrorsTests {
 
 
     @Test
-    public void DateErrorCheck() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/order");
+    public void dateErrorCheck() {
         OrderForm orderForm = new OrderForm(driver);
 
         orderForm.setName("Полина");
@@ -85,11 +57,7 @@ public class OrderFormErrorsTests {
 
 
     @Test
-    public void RentPeriodErrorCheck() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/order");
+    public void rentPeriodErrorCheck() {
         OrderForm orderForm = new OrderForm(driver);
 
         orderForm.setName("Полина");
@@ -104,11 +72,7 @@ public class OrderFormErrorsTests {
     }
 
     @Test
-    public void ColorChooseErrorCheck() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/order");
+    public void colorChooseErrorCheck() {
         OrderForm orderForm = new OrderForm(driver);
 
         orderForm.setName("Полина");
@@ -124,11 +88,7 @@ public class OrderFormErrorsTests {
 
 
     @Test
-    public void CommentFieldErrorCheck() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/order");
+    public void commentFieldErrorCheck() {
         OrderForm orderForm = new OrderForm(driver);
 
         orderForm.setName("Полина");
@@ -142,9 +102,4 @@ public class OrderFormErrorsTests {
         orderForm.isCommentFieldErrorVisible();
     }
 
-
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
 }

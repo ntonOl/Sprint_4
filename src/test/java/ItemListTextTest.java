@@ -1,17 +1,13 @@
-import org.junit.After;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import pageObject.MainPage;
+
+import ru.praktikum.services.qa.scooter.MainPage;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class ItemListTextTest {
-
-    private WebDriver driver;
+public class ItemListTextTest extends OpeningClosingMainPage {
 
     private final String expectedText;
     private final int itemIndex;
@@ -21,7 +17,7 @@ public class ItemListTextTest {
         this.itemIndex = itemIndex;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: {0} {1}")
     public static Object[][] getExpectedText() {
         return new Object[][] {
                 {"Сутки — 400 рублей. Оплата курьеру — наличными или картой.", 0},
@@ -41,22 +37,11 @@ public class ItemListTextTest {
     }
 
     @Test
-    public void ItemListTextCheck() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-
+    public void itemListTextCheck() {
         MainPage mainPage = new MainPage(driver);
-
-
         mainPage.listItemClick(itemIndex);
         String actual = mainPage.getItemText(itemIndex);
         assertEquals(expectedText, actual);
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
 }
